@@ -37,17 +37,22 @@ class OrderActivity : AppCompatActivity() {
 
         btn_clear_order.setOnClickListener {
             MyApplication.myMenuOrder.clear()
-            adapterOrders.notifyDataSetChanged()    //Refresh ListView items
+            adapterOrders.notifyDataSetChanged()    //Refresh ListView
+            img_cart.setImageResource(R.drawable.shopping_cart)
             Toast.makeText(this, "Has limpiado tu lista...", Toast.LENGTH_LONG).show()
             toggleImageVisibility()
         }
 
         btn_set_order.setOnClickListener {
-            MyApplication.myMenuOrder.clear()
-            adapterOrders.notifyDataSetChanged()    //Refresh ListView items
-            img_cart.setImageResource(R.drawable.check)
-            toggleImageVisibility()
-            Toast.makeText(this, "Tu pedido se ha procesado con exito!", Toast.LENGTH_LONG).show()
+            if(list_view_order.count != 0){ //Means that ListView has items to order
+                MyApplication.myMenuOrder.done()    //Change state of MenuOrder to 'Complete'
+                adapterOrders.notifyDataSetChanged()    //Refresh ListView items
+                img_cart.setImageResource(R.drawable.check)
+                toggleImageVisibility()
+                Toast.makeText(this, "Tu pedido se ha procesado con exito!", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this, "Error en pedido, no hay productos...", Toast.LENGTH_LONG).show()
+            }
         }
 
         btn_home.setOnClickListener {
@@ -61,9 +66,6 @@ class OrderActivity : AppCompatActivity() {
         if(img_cart.visibility == View.GONE){
             img_cart.visibility = View.VISIBLE
             list_view_order.visibility = View.GONE
-        } else {
-            img_cart.visibility = View.GONE
-            list_view_order.visibility = View.VISIBLE
         }
     }
 }
