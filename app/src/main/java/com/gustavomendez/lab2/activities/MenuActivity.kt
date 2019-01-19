@@ -15,19 +15,20 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
 
+        //Simple ArrayAdapter with a layout with simple string. Elements comes from MyApplication
         val adapterProducts = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MyApplication.dummyProducts)
         list_view_products.adapter =  adapterProducts
 
         list_view_products.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
             // Get the selected item text from ListView
             val selectedItem = parent.getItemAtPosition(position) as String
-            MyApplication.myMenuOrder.add(selectedItem)
-            // Display the selected item text on TextView
+            MyApplication.myMenuOrder.add(selectedItem) //Add the current item to the global order list
+            // Display the selected item text on Toast
             Toast.makeText(this, "Se agregó $selectedItem", Toast.LENGTH_LONG).show()
         }
 
         btn_home.setOnClickListener {
-            this.finish()
+            this.finish() //Finish current activity
         }
 
     }

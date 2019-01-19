@@ -2,6 +2,7 @@ package com.gustavomendez.lab2.models
 
 class MyMenuOrder:MenuOrder {
     override val menuOrder: ArrayList<String> = ArrayList()
+    var isComplete: Boolean = false
 
     override fun clear() {
         menuOrder.clear()
@@ -16,7 +17,7 @@ class MyMenuOrder:MenuOrder {
     }
 
     override fun done() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        isComplete = true
     }
 
 

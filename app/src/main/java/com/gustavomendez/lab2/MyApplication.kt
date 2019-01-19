@@ -14,8 +14,8 @@ class MyApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        dummyProducts = listOf("Hamburguesa", "Tacos", "Pepsi", "Papas fritas", "Tamalitos")
-        myMenuOrder = MyMenuOrder()
+        dummyProducts = listOf("Hamburguesa", "Tacos", "Pepsi", "Papas fritas", "Tamalitos") //Dummy products added
+        myMenuOrder = MyMenuOrder() //Init of the implementation of MenuOrder
     }
 
 

@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btn_show_menu.setOnClickListener {
-            startActivity(Intent(this, MenuActivity::class.java))
+            startActivity(Intent(this, MenuActivity::class.java)) //Start Menu Activity, but doesnt finish Main activity
         }
 
         btn_show_order.setOnClickListener {
